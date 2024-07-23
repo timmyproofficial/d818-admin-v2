@@ -1,5 +1,14 @@
+import { customerColumns } from '@/components/customs/customers/CustomerColumns';
+import { DataTable } from '@/components/ui/data-table';
+import useCustomers from '@/hooks/useCustomers';
+
 const CustomersPage = () => {
-  return <div>CustomersPage</div>;
+  const { data } = useCustomers();
+  return (
+    <div className="mx-auto">
+      <DataTable columns={customerColumns} data={data} />
+    </div>
+  );
 };
 
 export default CustomersPage;
