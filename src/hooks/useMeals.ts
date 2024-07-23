@@ -1,25 +1,14 @@
-import getMealsData from '@/data/meals';
+import { useQuery } from '@tanstack/react-query';
 import { Meal } from '@/entities/meal';
-import { useEffect, useState } from 'react';
+import APIClient from '@/services/apiClient';
+
+const apiClient = new APIClient<Meal>('/products/all');
 
 const useMeals = () => {
-  const [data, setData] = useState<Meal[]>([]);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getMealsData();
-        setData(result);
-      } catch (err: any) {
-        setError(err);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  return { data, error };
+  return useQuery<Meal[], Error>({
+    queryKey: ['meals'],
+    queryFn: apiClient.getAll,
+  });
 };
 
 export default useMeals;
