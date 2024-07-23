@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Meal } from '@/entities/meal';
+import { Link } from 'react-router-dom';
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -44,7 +45,7 @@ export const mealColumns: ColumnDef<Meal>[] = [
   {
     id: 'actions',
     cell: ({ row }) => {
-      const payment = row.original;
+      const meal = row.original;
 
       return (
         <DropdownMenu>
@@ -56,14 +57,11 @@ export const mealColumns: ColumnDef<Meal>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-            //   onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Copy payment ID
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            {/* <DropdownMenuItem>View customer</DropdownMenuItem> */}
+            <Link to={`/meals/${meal._id}`}>
+              <DropdownMenuItem>View meal details</DropdownMenuItem>
+            </Link>
           </DropdownMenuContent>
         </DropdownMenu>
       );

@@ -14,6 +14,7 @@ import {
   OutOfBoundPage,
   PaymentPage,
 } from './pages';
+import MealDetailPage from './pages/MealDetailPage';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       { path: 'admins', element: <AdminPage /> },
       { path: 'customers', element: <CustomersPage /> },
       { path: 'meals', element: <MealsPage /> },
+      { path: 'meals/:id', element: <MealDetailPage /> },
       { path: 'reviews', element: <ReviewsPage /> },
       { path: 'menu', element: <MenuPage /> },
       { path: 'categories', element: <CategoriesPage /> },
