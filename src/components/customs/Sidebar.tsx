@@ -33,6 +33,12 @@ interface MenuItemsInterface {
 const Sidebar = () => {
   const menuItems: MenuItemsInterface[] = [
     {
+      id: 11,
+      link: '/payments',
+      icon: <ShieldCheck />,
+      text: 'Payments',
+    },
+    {
       id: 1,
       link: '/admins',
       icon: <ShieldCheck />,

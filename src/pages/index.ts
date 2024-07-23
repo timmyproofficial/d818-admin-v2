@@ -10,3 +10,4 @@ export { default as MenuPage } from './MenuPage';
 export { default as OrdersPage } from './OrdersPage';
 export { default as OutOfBoundPage } from './OutOfBoundPage';
 export { default as ReviewsPage } from './ReviewsPage';
+export { default as PaymentPage } from './PaymentPage';

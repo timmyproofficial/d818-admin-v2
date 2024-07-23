@@ -12,6 +12,7 @@ import {
   FeedbackPage,
   OrdersPage,
   OutOfBoundPage,
+  PaymentPage,
 } from './pages';
 
 const router = createBrowserRouter([
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <DashboardPage /> },
+      { path: 'payments', element: <PaymentPage /> },
       { path: 'admins', element: <AdminPage /> },
       { path: 'customers', element: <CustomersPage /> },
       { path: 'meals', element: <MealsPage /> },
