@@ -66,4 +66,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .active-link {
+    color: rgb(254, 98, 37);
+  }
 }

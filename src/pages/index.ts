@@ -1,1 +1,12 @@
 export { default as DashboardPage } from './DashboardPage';
+export { default as Layout } from './Layout';
+export { default as AdminPage } from './AdminPage';
+export { default as CustomersPage } from './CustomersPage';
+export { default as CampusesPage } from './CampusesPage';
+export { default as CategoriesPage } from './CategoriesPage';
+export { default as FeedbackPage } from './FeedbackPage';
+export { default as MealsPage } from './MealsPage';
+export { default as MenuPage } from './MenuPage';
+export { default as OrdersPage } from './OrdersPage';
+export { default as OutOfBoundPage } from './OutOfBoundPage';
+export { default as ReviewsPage } from './ReviewsPage';
