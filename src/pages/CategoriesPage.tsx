@@ -1,5 +1,12 @@
+import Heading from '@/components/customs/Heading';
+
 const CategoriesPage = () => {
-  return <div>CategoriesPage</div>;
+  return (
+    <div>
+      <Heading title="Categories" />
+      CategoriesPage
+    </div>
+  );
 };
 
 export default CategoriesPage;

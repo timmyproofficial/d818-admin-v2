@@ -67,6 +67,10 @@
     @apply bg-background text-foreground;
   }
 
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
   .active-link {
     color: rgb(254, 98, 37);
   }

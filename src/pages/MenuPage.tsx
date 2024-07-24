@@ -1,5 +1,12 @@
+import Heading from '@/components/customs/Heading';
+
 const MenuPage = () => {
-  return <div>MenuPage</div>;
+  return (
+    <div>
+      <Heading title="Menu" />
+      MenuPage
+    </div>
+  );
 };
 
 export default MenuPage;
