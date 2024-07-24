@@ -6,7 +6,7 @@ interface Props {
 const Heading = ({ title, text }: Props) => {
   return (
     <div>
-      <h1 className="mb-8 uppercase">{title}</h1>
+      <h1 className="mb-8">{title}</h1>
       <small>{text}</small>
     </div>
   );
