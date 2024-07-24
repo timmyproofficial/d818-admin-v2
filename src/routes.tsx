@@ -13,13 +13,19 @@ import {
   OrdersPage,
   OutOfBoundPage,
   PaymentPage,
+  LoginPage,
 } from './pages';
 import MealDetailPage from './pages/MealDetailPage';
+import PrivateRoutes from './pages/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    children: [{ path: 'login', element: <LoginPage /> }],
+  },
+  {
+    element: <PrivateRoutes />,
     children: [
       { index: true, element: <DashboardPage /> },
       { path: 'payments', element: <PaymentPage /> },
