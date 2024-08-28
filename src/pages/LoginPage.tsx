@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { AuthCredential } from '@/entities/auth';
 import useAuth from '@/hooks/useAuth';
+import useAuthUser from '@/hooks/useAuthUser';
 import { FormEvent, useState } from 'react';
 
 const LoginPage = () => {
@@ -26,12 +27,11 @@ const LoginPage = () => {
     mutate(authCredentials);
   };
 
-  console.log(data);
   console.log(error);
-  const user = '';
+  const authUser = useAuthUser();
   return (
     <>
-      {!user && (
+      {!authUser && (
         <Card className="w-[50%] mx-auto mt-10">
           <form onSubmit={handleSubmit}>
             <CardHeader className="text-center">

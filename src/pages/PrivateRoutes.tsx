@@ -1,9 +1,10 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import Layout from './Layout';
+import useAuthUser from '@/hooks/useAuthUser';
 
-const user = 'ss';
 const PrivateRoutes = () => {
-  if (!user) return <Navigate to="/login" />;
+  const authUser = useAuthUser();
+  if (!authUser) return <Navigate to="/login" />;
   return <Layout />;
 };
 
