@@ -9,35 +9,76 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { AuthCredential } from '@/entities/auth';
+import useAuth from '@/hooks/useAuth';
+import { FormEvent, useState } from 'react';
 
 const LoginPage = () => {
-  const user = 'ss';
+  const [authCredentials, setAuthCredentials] = useState<AuthCredential>({
+    email: '',
+    password: '',
+  });
+
+  const { mutate, data, isLoading, error } = useAuth();
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    mutate(authCredentials);
+  };
+
+  console.log(data);
+  console.log(error);
+  const user = '';
   return (
     <>
       {!user && (
         <Card className="w-[50%] mx-auto mt-10">
-          <CardHeader className="text-center">
-            <CardTitle>Welcome Back!</CardTitle>
-            <CardDescription>Log in to your Account</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form>
+          <form onSubmit={handleSubmit}>
+            <CardHeader className="text-center">
+              <CardTitle>Welcome Back!</CardTitle>
+              <CardDescription>Log in to your Account</CardDescription>
+            </CardHeader>
+            <CardContent>
               <div className="grid w-full items-center gap-4">
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" placeholder="Enter your email..." />
+                  <Input
+                    id="email"
+                    name="email"
+                    value={authCredentials?.email}
+                    onChange={(event) =>
+                      setAuthCredentials({
+                        ...authCredentials,
+                        email: event.target.value,
+                      })
+                    }
+                    placeholder="Enter your email..."
+                  />
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="password">Password</Label>
-                  <Input id="password" placeholder="Enter password..." />
+                  <Input
+                    id="password"
+                    name="password"
+                    value={authCredentials?.password}
+                    onChange={(event) =>
+                      setAuthCredentials({
+                        ...authCredentials,
+                        password: event.target.value,
+                      })
+                    }
+                    placeholder="Enter password..."
+                  />
                 </div>
               </div>
-            </form>
-          </CardContent>
-          <CardFooter className="flex justify-between">
-            <Button variant="outline">Login</Button>
-            {/* <Button>Deploy</Button> */}
-          </CardFooter>
+            </CardContent>
+            <CardFooter className="flex justify-between">
+              <Button disabled={isLoading} type="submit" variant="outline">
+                {isLoading ? 'Logging in...' : 'Login'}
+              </Button>
+              {/* <Button>Deploy</Button> */}
+            </CardFooter>
+          </form>
         </Card>
       )}
     </>
