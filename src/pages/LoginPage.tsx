@@ -11,7 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 const LoginPage = () => {
-  const user = 'd';
+  const user = 'ss';
   return (
     <>
       {!user && (

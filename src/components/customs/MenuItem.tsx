@@ -12,11 +12,13 @@ const MenuItem = ({ link, icon, text }: Props) => {
   return (
     <NavLink
       to={link}
-      style={{ display: 'flex', gap: '12px' }}
+      style={{ display: 'flex', gap: '8px' }}
       className={({ isActive }) => (isActive ? 'active-link' : '')}
     >
-      {icon}
-      <span>{text}</span>
+      <div className="flex gap-2 items-center">
+        <span className="text-gray-500 text-xs">{icon}</span>
+        <span className="text-gray-700">{text}</span>
+      </div>
     </NavLink>
   );
 };

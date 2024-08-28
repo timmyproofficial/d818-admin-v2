@@ -1,9 +1,10 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import Layout from './Layout';
 
-const user = null;
+const user = 'ss';
 const PrivateRoutes = () => {
   if (!user) return <Navigate to="/login" />;
-  return <Outlet />;
+  return <Layout />;
 };
 
 export default PrivateRoutes;
