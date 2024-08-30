@@ -12,6 +12,7 @@ import { Label } from '@/components/ui/label';
 import { AuthCredential } from '@/entities/auth';
 import useAuth from '@/hooks/useAuth';
 import useAuthUser from '@/hooks/useAuthUser';
+import userAuthStore from '@/store';
 import { FormEvent, useState } from 'react';
 
 const LoginPage = () => {
@@ -27,8 +28,9 @@ const LoginPage = () => {
     mutate(authCredentials);
   };
 
-  console.log(error);
-  const authUser = useAuthUser();
+  // console.log(error);
+  // const authUser = useAuthUser();
+  const { user: authUser } = userAuthStore();
   return (
     <>
       {!authUser && (

@@ -1,9 +1,11 @@
 import Navbar from '@/components/customs/Navbar';
 import Sidebar from '@/components/customs/Sidebar';
 import useAuthUser from '@/hooks/useAuthUser';
+import userAuthStore from '@/store';
 import { Outlet } from 'react-router-dom';
 const Layout = () => {
-  const authUser = useAuthUser();
+  // const authUser = useAuthUser();
+  const { user: authUser } = userAuthStore();
   return (
     // <div className="grid grid-cols-[300px_1fr] grid-rows-[70px_1fr] min-h-screen">
     <div

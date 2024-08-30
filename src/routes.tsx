@@ -22,7 +22,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
-    children: [{ path: 'login', element: <LoginPage /> }],
+    children: [
+      { index: true, element: <DashboardPage /> },
+      { path: 'login', element: <LoginPage /> },
+    ],
   },
   {
     element: <PrivateRoutes />,
