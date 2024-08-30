@@ -2,10 +2,13 @@ import Navbar from '@/components/customs/Navbar';
 import Sidebar from '@/components/customs/Sidebar';
 import useAuthUser from '@/hooks/useAuthUser';
 import userAuthStore from '@/store';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import DashboardPage from './DashboardPage';
 const Layout = () => {
   // const authUser = useAuthUser();
   const { user: authUser } = userAuthStore();
+  const location = useLocation();
+
   return (
     // <div className="grid grid-cols-[300px_1fr] grid-rows-[70px_1fr] min-h-screen">
     <div
@@ -24,7 +27,13 @@ const Layout = () => {
         </aside>
       )}
       <main className="p-5">
-        <Outlet />
+        {location.pathname === '/login' && authUser ? (
+          // <DashboardPage />
+          <Navigate to="/" />
+        ) : (
+          <Outlet />
+        )}
+        {/* <Outlet /> */}
       </main>
     </div>
   );

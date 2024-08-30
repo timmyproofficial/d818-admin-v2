@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import { AuthUser } from './entities/auth';
 
 interface AuthStore {
@@ -7,8 +8,10 @@ interface AuthStore {
   logout: () => void;
 }
 
+const authUser = JSON.parse(localStorage.getItem('authUser')!);
+
 const userAuthStore = create<AuthStore>((set) => ({
-  user: null,
+  user: authUser,
   login: () => set((user: any) => ({ user: user })),
   logout: () => set(() => ({ user: null })),
 }));
