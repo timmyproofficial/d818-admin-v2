@@ -38,10 +38,10 @@ export const mealColumns: ColumnDef<Meal>[] = [
       );
     },
   },
-  {
-    accessorKey: 'description',
-    header: 'Description',
-  },
+  // {
+  //   accessorKey: 'description',
+  //   header: 'Description',
+  // },
   {
     id: 'actions',
     cell: ({ row }) => {
