@@ -11,10 +11,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { AuthCredential } from '@/entities/auth';
 import useAuth from '@/hooks/useAuth';
-import useAuthUser from '@/hooks/useAuthUser';
 import userAuthStore from '@/store';
 import { FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [authCredentials, setAuthCredentials] = useState<AuthCredential>({

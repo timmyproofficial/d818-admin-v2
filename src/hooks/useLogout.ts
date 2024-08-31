@@ -1,4 +1,5 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
+import {toast} from 'react-toastify'
 import APIClient from '@/services/apiClient';
 import { AuthUser } from '@/entities/auth';
 import userAuthStore from '@/store';
@@ -19,6 +20,7 @@ const useLogout = () => {
 
       localStorage.removeItem('authUser');
       logout();
+      toast.success('Admin logged out successfully')
     },
   });
 };

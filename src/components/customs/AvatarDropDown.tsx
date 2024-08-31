@@ -1,5 +1,4 @@
 import { LogOut, LogIn, User } from 'lucide-react';
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -39,7 +38,11 @@ export function AvatarDropDown({ user, mutate }: Props) {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => mutate()}>
+        <DropdownMenuItem
+          onClick={() => {
+            mutate();
+          }}
+        >
           <LogOut className="mr-2 h-4 w-4" />
           <span>Log out</span>
         </DropdownMenuItem>

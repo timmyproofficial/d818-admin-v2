@@ -1,4 +1,5 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
+import {toast} from 'react-toastify'
 import APIClient from '@/services/apiClient';
 import { AuthCredential, AuthUser } from '@/entities/auth';
 import userAuthStore from '@/store';
@@ -20,6 +21,11 @@ const useAuth = () => {
 
       localStorage.setItem('authUser', JSON.stringify(data));
       login(JSON.stringify(localStorage.getItem('authUser')));
+      toast.success('Admin logged in successfully')
+    },
+
+    onError: (error) => {
+      toast.error('Please, enter valid credentials');
     },
   });
 };
