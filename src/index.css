@@ -77,5 +77,6 @@
 
   .active-link {
     color: rgb(254, 98, 37);
+    font-weight: 500;
   }
 }

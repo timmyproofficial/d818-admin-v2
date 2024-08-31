@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import React from 'react';
 import MenuItem from './MenuItem';
+import { useLocation } from 'react-router-dom';
 
 interface MenuItemsInterface {
   id: number;
@@ -21,6 +22,9 @@ interface MenuItemsInterface {
 }
 
 const Sidebar = () => {
+  const location = useLocation();
+  const currentLink = location.pathname;
+
   const menuItems: MenuItemsInterface[] = [
     {
       id: 11,
@@ -100,27 +104,6 @@ const Sidebar = () => {
           text={item.text}
         />
       ))}
-      {/* <Command style={{ overflow: 'visible' }}>
-          <CommandList>
-            {menuList.map((menu: any, key: number) => (
-              <>
-                <CommandGroup key={menu?.id} heading={menu?.group}>
-                  {menu?.items.map((item: any, itemKey: number) => (
-                    <Link to={item?.link}>
-                      <CommandItem
-                        key={item?.id}
-                        className="flex gap-2 cursor-pointer"
-                      >
-                        {item?.icon} {item?.text}
-                      </CommandItem>
-                    </Link>
-                  ))}
-                </CommandGroup>
-                <CommandSeparator />
-              </>
-            ))}
-          </CommandList>
-        </Command> */}
     </div>
   );
 };

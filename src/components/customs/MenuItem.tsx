@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 
 interface Props {
   link: string;
@@ -8,17 +9,20 @@ interface Props {
 }
 
 const MenuItem = ({ link, icon, text }: Props) => {
+  const location = useLocation();
+  const currentLink = location.pathname;
   return (
-    <NavLink
-      to={link}
-      style={{ display: 'flex', gap: '8px' }}
-      className={({ isActive }) => (isActive ? 'active-link' : '')}
-    >
-      <div className="flex gap-2 items-center">
-        <span className="text-gray-500 text-xs">{icon}</span>
-        <span className="text-gray-600">{text}</span>
+    <Link to={link} style={{ display: 'flex', gap: '8px' }}>
+      <div
+        className={classNames({
+          'flex gap-2 items-center text-gray-500': true,
+          '!active-link': link === currentLink,
+        })}
+      >
+        <span>{icon}</span>
+        <span>{text}</span>
       </div>
-    </NavLink>
+    </Link>
   );
 };
 
