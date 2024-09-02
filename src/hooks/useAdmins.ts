@@ -1,25 +1,16 @@
 import getAdminData from '@/data/admins';
+import { useQuery } from '@tanstack/react-query';
 import { Admin } from '@/entities/admin';
 import { useEffect, useState } from 'react';
+import APIClient from '@/services/apiClient';
+
+const apiClient = new APIClient<Admin>('/admins');
 
 const useAdmins = () => {
-  const [data, setData] = useState<Admin[]>([]);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getAdminData();
-        setData(result);
-      } catch (err: any) {
-        setError(err);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  return { data, error };
+  return useQuery<Admin[], Error>({
+    queryKey: ['admins'],
+    queryFn: apiClient.getAll,
+  });
 };
 
 export default useAdmins;
