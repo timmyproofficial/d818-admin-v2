@@ -4,7 +4,12 @@ import { DataTable } from '@/components/ui/data-table';
 import useCustomers from '@/hooks/useCustomers';
 
 const CustomersPage = () => {
-  const { data } = useCustomers();
+  const { data, isLoading, error } = useCustomers();
+
+  if (isLoading) return <p>Loading...</p>;
+
+  if (error) return <p>{error.message}</p>;
+
   return (
     <>
       <Heading title="Customers" />
