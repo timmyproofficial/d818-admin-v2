@@ -1,5 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table';
-import { MoreHorizontal, ArrowUpDown } from 'lucide-react';
+import { MoreHorizontal, ArrowUpDown, GraduationCap, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -20,10 +20,6 @@ export const customerColumns: ColumnDef<Customer>[] = [
     header: 'Full Name',
   },
   {
-    accessorKey: 'phone',
-    header: 'Phone Number',
-  },
-  {
     accessorKey: 'email',
     header: ({ column }) => {
       return (
@@ -38,12 +34,30 @@ export const customerColumns: ColumnDef<Customer>[] = [
     },
   },
   {
-    accessorKey: 'address',
-    header: 'Address',
+    accessorKey: 'phone',
+    header: 'Phone Number',
   },
+
+  // {
+  //   accessorKey: 'address',
+  //   header: 'Address',
+  // },
   {
     accessorKey: 'role',
     header: 'Access Level',
+    cell: ({ row }) => {
+      const customer = row.original;
+
+      return (
+        <span className="flex justify-center items-center rounded-full p-1 w-8 bg-gray-200">
+          {customer.role === 'student' ? (
+            <GraduationCap className="text-orange-700" />
+          ) : (
+            <User className="text-green-700" />
+          )}
+        </span>
+      );
+    },
   },
   {
     id: 'actions',
