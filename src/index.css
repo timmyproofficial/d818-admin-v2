@@ -75,6 +75,10 @@
     @apply text-3xl font-semibold;
   }
 
+  h3 {
+    @apply text-2xl;
+  }
+
   .active-link {
     color: rgb(254, 98, 37);
     font-weight: 500;

@@ -36,7 +36,9 @@ const LoginPage = () => {
         <Card className="w-[50%] mx-auto mt-10">
           <form onSubmit={handleSubmit}>
             <CardHeader className="text-center">
-              <CardTitle>Welcome Back!</CardTitle>
+              <CardTitle>
+                <h1 className="text-[#46af6b]">Welcome Back!</h1>
+              </CardTitle>
               <CardDescription>Log in to your Account</CardDescription>
             </CardHeader>
             <CardContent>
@@ -61,6 +63,7 @@ const LoginPage = () => {
                   <Input
                     id="password"
                     name="password"
+                    type="password"
                     value={authCredentials?.password}
                     onChange={(event) =>
                       setAuthCredentials({
@@ -74,8 +77,15 @@ const LoginPage = () => {
               </div>
             </CardContent>
             <CardFooter className="flex justify-between">
-              <Button disabled={isLoading} type="submit" variant="outline">
-                {isLoading ? 'Logging in...' : 'Login'}
+              <Button
+                className="bg-[#fe6225] hover:bg-[#eb5317] hover:text-white text-white uppercase w-full"
+                disabled={isLoading}
+                type="submit"
+                variant="outline"
+              >
+                <p className="text-[1rem] font-normal">
+                  {isLoading ? 'Logging in...' : 'Login'}
+                </p>
               </Button>
               {/* <Button>Deploy</Button> */}
             </CardFooter>
