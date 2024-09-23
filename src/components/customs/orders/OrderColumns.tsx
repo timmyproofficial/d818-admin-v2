@@ -89,7 +89,7 @@ export const orderColumns: ColumnDef<Order>[] = [
       );
 
       return (
-        <Badge className="bg-gray-200 text-black; hover:bg-gray-300 cursor-pointer text-center font-semibold">
+        <Badge className="bg-gray-100 text-black; hover:bg-gray-200 cursor-pointer text-center font-semibold">
           {formattedDate}
         </Badge>
       );

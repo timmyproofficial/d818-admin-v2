@@ -14,7 +14,11 @@ const CategoriesPage = () => {
     <>
       <Heading title="Categories" />
       <div className="mx-auto">
-        <DataTable columns={categoryColumns} data={data} />
+        <DataTable
+          columns={categoryColumns}
+          data={data}
+          filter={{ id: 'name', name: 'Category' }}
+        />
       </div>
     </>
   );

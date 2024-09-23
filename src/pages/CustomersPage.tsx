@@ -14,7 +14,11 @@ const CustomersPage = () => {
     <>
       <Heading title="Customers" />
       <div className="mx-auto">
-        <DataTable columns={customerColumns} data={data} />
+        <DataTable
+          columns={customerColumns}
+          data={data}
+          filter={{ id: 'email', name: 'Email' }}
+        />
       </div>
     </>
   );

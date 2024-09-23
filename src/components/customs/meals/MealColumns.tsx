@@ -23,19 +23,35 @@ export const mealColumns: ColumnDef<Meal>[] = [
   {
     accessorKey: 'category.name',
     header: 'Category',
+    cell: ({ row }) => {
+      const meal = row.original;
+
+      return <div className="font-semibold">{meal.category.name}</div>;
+    },
   },
   {
     accessorKey: 'price',
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-        >
-          Price
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="flex justify-center">
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          >
+            Price
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
       );
+    },
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue('price'));
+      const formatted = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'GBP',
+      }).format(amount);
+
+      return <div className="text-center font-semibold">{formatted}</div>;
     },
   },
   // {

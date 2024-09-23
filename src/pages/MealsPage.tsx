@@ -14,7 +14,11 @@ const MealsPage = () => {
     <>
       <Heading title="Meals" />
       <div className="mx-auto">
-        <DataTable columns={mealColumns} data={data || []} />
+        <DataTable
+          columns={mealColumns}
+          data={data}
+          filter={{ id: 'name', name: 'Name' }}
+        />
       </div>
     </>
   );

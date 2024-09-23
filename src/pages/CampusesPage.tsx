@@ -14,7 +14,11 @@ const CampusesPage = () => {
     <>
       <Heading title="Campuses" />
       <div className="mx-auto">
-        <DataTable columns={campusColumns} data={data} />
+        <DataTable
+          columns={campusColumns}
+          data={data}
+          filter={{ id: 'name', name: 'Name' }}
+        />
       </div>
     </>
   );

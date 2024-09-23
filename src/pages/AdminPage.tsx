@@ -13,7 +13,11 @@ const AdminPage = () => {
     <>
       <Heading title="Admin" />
       <div className="mx-auto">
-        <DataTable columns={adminColumns} data={data!} />
+        <DataTable
+          columns={adminColumns}
+          data={data}
+          filter={{ id: 'firstName', name: 'First Name' }}
+        />
       </div>
     </>
   );

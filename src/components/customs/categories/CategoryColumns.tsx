@@ -19,6 +19,11 @@ export const categoryColumns: ColumnDef<Category>[] = [
   {
     accessorKey: 'name',
     header: 'Category',
+    cell: ({ row }) => {
+      const category = row.original;
+
+      return <div className="font-semibold">{category.name}</div>;
+    },
   },
   {
     id: 'actions',

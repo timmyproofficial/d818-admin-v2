@@ -61,20 +61,22 @@ export function DataTable<TData, TValue>({
   return (
     <>
       <div className="flex items-center mb-3">
-        <Input
-          placeholder={`Filter by ${filter?.name}...`}
-          value={
-            (table
-              .getColumn(filter?.id || 'email')
-              ?.getFilterValue() as string) ?? ''
-          }
-          onChange={(event) =>
-            table
-              .getColumn(filter?.id || 'email')
-              ?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
+        {filter && (
+          <Input
+            placeholder={`Filter by ${filter?.name}...`}
+            value={
+              (table
+                .getColumn(filter?.id || 'email')
+                ?.getFilterValue() as string) ?? ''
+            }
+            onChange={(event) =>
+              table
+                .getColumn(filter?.id || 'email')
+                ?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm"
+          />
+        )}
       </div>
       <div className="rounded-md border border-t-0 overflow-hidden">
         <Table>

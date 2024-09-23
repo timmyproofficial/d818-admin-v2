@@ -36,6 +36,11 @@ export const customerColumns: ColumnDef<Customer>[] = [
   {
     accessorKey: 'phone',
     header: 'Phone Number',
+    cell: ({ row }) => {
+      const customer = row.original;
+
+      return <div className="font-semibold">{customer.phone}</div>;
+    },
   },
 
   // {
@@ -49,7 +54,7 @@ export const customerColumns: ColumnDef<Customer>[] = [
       const customer = row.original;
 
       return (
-        <span className="flex justify-center items-center rounded-full p-1 w-8 bg-gray-200">
+        <span className="flex justify-center items-center rounded-full p-1 w-8 bg-gray-100 hover:bg-gray-200">
           {customer.role === 'student' ? (
             <GraduationCap className="text-orange-700" />
           ) : (

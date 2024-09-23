@@ -15,7 +15,11 @@ const FeedbackPage = () => {
       <Heading title="Feedback" />
 
       <div className="mx-auto">
-        <DataTable columns={feedbackColumns} data={data} />
+        <DataTable
+          columns={feedbackColumns}
+          data={data}
+          filter={{ id: 'email', name: 'Email' }}
+        />
       </div>
     </>
   );
