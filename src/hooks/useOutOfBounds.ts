@@ -4,10 +4,10 @@ import APIClient from '@/services/apiClient';
 
 const apiClient = new APIClient<OutOfBound>('/out-of-bound');
 
-const useOutOfBound = () =>
+const useOutOfBounds = () =>
   useQuery<OutOfBound[], Error>({
     queryKey: ['outOfBounds'],
     queryFn: apiClient.getAll,
   });
 
-export default useOutOfBound;
+export default useOutOfBounds;
