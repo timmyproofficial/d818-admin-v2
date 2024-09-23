@@ -26,12 +26,17 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   tableHeaderClasses?: string;
+  filter?: {
+    id: string;
+    name: string;
+  };
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   tableHeaderClasses,
+  filter,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -57,10 +62,16 @@ export function DataTable<TData, TValue>({
     <>
       <div className="flex items-center mb-3">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
+          placeholder={`Filter by ${filter?.name}...`}
+          value={
+            (table
+              .getColumn(filter?.id || 'email')
+              ?.getFilterValue() as string) ?? ''
+          }
           onChange={(event) =>
-            table.getColumn('email')?.setFilterValue(event.target.value)
+            table
+              .getColumn(filter?.id || 'email')
+              ?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

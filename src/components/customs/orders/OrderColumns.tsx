@@ -1,5 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { MoreHorizontal, ArrowUpDown, GraduationCap, User } from 'lucide-react';
+import moment from 'moment';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -22,24 +23,46 @@ export const orderColumns: ColumnDef<Order>[] = [
   },
   {
     accessorKey: 'subTotal',
-    header: 'Sub Total',
+    header: () => <div className="text-center">Sub Total</div>,
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue('subTotal'));
+      const formatted = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'GBP',
+      }).format(amount);
+
+      return <div className="text-center font-semibold">{formatted}</div>;
+    },
   },
   {
     accessorKey: 'totalPrice',
-    header: 'Total',
+    header: () => <div className="text-center">Total</div>,
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue('totalPrice'));
+      const formatted = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'GBP',
+      }).format(amount);
+
+      return <div className="text-center font-semibold">{formatted}</div>;
+    },
   },
   {
     accessorKey: 'deliveryStatus',
-    header: 'Delivery Status',
+    header: () => <div className="text-center">Delivery Status</div>,
     cell: ({ row }) => {
       const order = row.original;
 
       return (
-        <span className="flex justify-center items-center rounded-full p-1 w-8 bg-gray-200">
+        <span className="flex justify-center">
           {order.deliveryStatus === 'pending' ? (
-            <Badge className="text-orange-600">{order.deliveryStatus}</Badge>
+            <Badge className="bg-orange-400 hover:bg-orange-700 text-white cursor-pointer">
+              {order.deliveryStatus}
+            </Badge>
           ) : (
-            <Badge className="text-green-600">{order.deliveryStatus}</Badge>
+            <Badge className="bg-green-400 hover:bg-green-700 text-white cursor-pointer">
+              {order.deliveryStatus}
+            </Badge>
           )}
         </span>
       );
@@ -56,6 +79,19 @@ export const orderColumns: ColumnDef<Order>[] = [
           Date ordered
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const order = row.original;
+
+      const formattedDate = moment(order.dateOrdered).format(
+        'MMM Do YY, h:mm:ss a'
+      );
+
+      return (
+        <Badge className="bg-gray-200 text-black; hover:bg-gray-300 cursor-pointer text-center font-semibold">
+          {formattedDate}
+        </Badge>
       );
     },
   },
