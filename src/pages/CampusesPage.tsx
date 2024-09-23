@@ -6,7 +6,7 @@ import Heading from '@/components/customs/Heading';
 const CampusesPage = () => {
   const { data, isLoading, error } = useCampuses();
 
-  if (isLoading) return <p>Loading...</p>;
+  // if (isLoading) return <p>Loading...</p>;
 
   if (error) return <p>{error.message}</p>;
 
@@ -16,7 +16,8 @@ const CampusesPage = () => {
       <div className="mx-auto">
         <DataTable
           columns={campusColumns}
-          data={data}
+          isLoading={isLoading}
+          data={data || []}
           filter={{ id: 'name', name: 'Name' }}
         />
       </div>

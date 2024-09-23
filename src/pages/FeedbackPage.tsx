@@ -6,7 +6,7 @@ import useFeedbacks from '@/hooks/useFeedbacks';
 const FeedbackPage = () => {
   const { data, isLoading, error } = useFeedbacks();
 
-  if (isLoading) return <p>Loading...</p>;
+  // if (isLoading) return <p>Loading...</p>;
 
   if (error) return <p>{error.message}</p>;
 
@@ -17,7 +17,8 @@ const FeedbackPage = () => {
       <div className="mx-auto">
         <DataTable
           columns={feedbackColumns}
-          data={data}
+          isLoading={isLoading}
+          data={data || []}
           filter={{ id: 'email', name: 'Email' }}
         />
       </div>

@@ -6,7 +6,7 @@ import useReviews from '@/hooks/useReviews';
 const ReviewsPage = () => {
   const { data, isLoading, error } = useReviews();
 
-  if (isLoading) return <p>Loading...</p>;
+  // if (isLoading) return <p>Loading...</p>;
 
   if (error) return <p>{error.message}</p>;
 
@@ -14,7 +14,11 @@ const ReviewsPage = () => {
     <>
       <Heading title="Reviews" />
       <div className="mx-auto">
-        <DataTable columns={reviewColumns} data={data} />
+        <DataTable
+          columns={reviewColumns}
+          data={data || []}
+          isLoading={isLoading}
+        />
       </div>
     </>
   );

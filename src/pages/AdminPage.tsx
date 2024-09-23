@@ -6,7 +6,7 @@ import useAdmins from '@/hooks/useAdmins';
 const AdminPage = () => {
   const { data, isLoading, error } = useAdmins();
 
-  if (isLoading) return <p>Loading...</p>;
+  // if (isLoading) return <p>Loading...</p>;
 
   if (error) return <p>{error.message}</p>;
   return (
@@ -15,7 +15,8 @@ const AdminPage = () => {
       <div className="mx-auto">
         <DataTable
           columns={adminColumns}
-          data={data}
+          isLoading={isLoading}
+          data={data || []}
           filter={{ id: 'firstName', name: 'First Name' }}
         />
       </div>

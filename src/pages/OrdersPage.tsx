@@ -6,7 +6,7 @@ import useOrders from '@/hooks/useOrders';
 const OrdersPage = () => {
   const { data, isLoading, error } = useOrders();
 
-  if (isLoading) return <p>Loading...</p>;
+  // if (isLoading) return <p>Loading...</p>;
 
   if (error) return <p>{error.message}</p>;
 
@@ -17,7 +17,8 @@ const OrdersPage = () => {
       <div className="mx-auto">
         <DataTable
           columns={orderColumns}
-          data={data}
+          isLoading={isLoading}
+          data={data || []}
           filter={{ id: 'customer', name: 'Full Name' }}
         />
       </div>

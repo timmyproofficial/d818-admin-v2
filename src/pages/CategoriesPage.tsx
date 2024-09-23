@@ -6,7 +6,7 @@ import useCategories from '@/hooks/useCategories';
 const CategoriesPage = () => {
   const { data, isLoading, error } = useCategories();
 
-  if (isLoading) return <p>Loading...</p>;
+  // if (isLoading) return <p>Loading...</p>;
 
   if (error) return <p>{error.message}</p>;
 
@@ -16,7 +16,8 @@ const CategoriesPage = () => {
       <div className="mx-auto">
         <DataTable
           columns={categoryColumns}
-          data={data}
+          isLoading={isLoading}
+          data={data || []}
           filter={{ id: 'name', name: 'Category' }}
         />
       </div>

@@ -6,7 +6,7 @@ import useMeals from '@/hooks/useMeals';
 const MealsPage = () => {
   const { data, error, isLoading } = useMeals();
 
-  if (isLoading) return <div>Loading...</div>;
+  // if (isLoading) return <div>Loading...</div>;
 
   if (error) return <div>{error.message}</div>;
 
@@ -16,7 +16,8 @@ const MealsPage = () => {
       <div className="mx-auto">
         <DataTable
           columns={mealColumns}
-          data={data}
+          isLoading={isLoading}
+          data={data || []}
           filter={{ id: 'name', name: 'Name' }}
         />
       </div>

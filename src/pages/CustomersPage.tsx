@@ -6,7 +6,7 @@ import useCustomers from '@/hooks/useCustomers';
 const CustomersPage = () => {
   const { data, isLoading, error } = useCustomers();
 
-  if (isLoading) return <p>Loading...</p>;
+  // if (isLoading) return <p>Loading...</p>;
 
   if (error) return <p>{error.message}</p>;
 
@@ -16,7 +16,8 @@ const CustomersPage = () => {
       <div className="mx-auto">
         <DataTable
           columns={customerColumns}
-          data={data}
+          isLoading={isLoading}
+          data={data || []}
           filter={{ id: 'email', name: 'Email' }}
         />
       </div>
