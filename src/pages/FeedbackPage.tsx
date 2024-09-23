@@ -1,46 +1,23 @@
 import Heading from '@/components/customs/Heading';
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { feedbackColumns } from '@/components/customs/feedbacks/FeedbackColumns';
+import { DataTable } from '@/components/ui/data-table';
+import useFeedbacks from '@/hooks/useFeedbacks';
 
 const FeedbackPage = () => {
+  const { data, isLoading, error } = useFeedbacks();
+
+  if (isLoading) return <p>Loading...</p>;
+
+  if (error) return <p>{error.message}</p>;
+
   return (
-    <div>
+    <>
       <Heading title="Feedback" />
 
-      <Card className="w-[50%] mx-auto mt-10">
-        <CardHeader className="text-center">
-          <CardTitle>Welcome Back!</CardTitle>
-          <CardDescription>Log in to your Account</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form>
-            <div className="grid w-full items-center gap-4">
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="title">Title</Label>
-                <Input id="title" placeholder="Enter your title..." />
-              </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="body">Description</Label>
-                <Input id="body" placeholder="Enter body..." />
-              </div>
-            </div>
-          </form>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button variant="outline">Submit</Button>
-          {/* <Button>Deploy</Button> */}
-        </CardFooter>
-      </Card>
-    </div>
+      <div className="mx-auto">
+        <DataTable columns={feedbackColumns} data={data} />
+      </div>
+    </>
   );
 };
 
