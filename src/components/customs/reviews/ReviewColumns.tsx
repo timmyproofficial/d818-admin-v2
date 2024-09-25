@@ -1,5 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table';
-import { MoreHorizontal, ArrowUpDown } from 'lucide-react';
+import { MoreHorizontal, ArrowUpDown, Star, LucideProps } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Review } from '@/entities/review';
 import { Link } from 'react-router-dom';
+import React from 'react';
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -41,8 +42,17 @@ export const reviewColumns: ColumnDef<Review>[] = [
     },
     cell: ({ row }) => {
       const review = row.original;
-
-      return <div className="font-semibold text-center">{review.rating}</div>;
+      return (
+        <div className="font-semibold text-center">
+          {Array.from({ length: review.rating }, (_, index) => (
+            <Star
+              size={16}
+              className="inline fill-yellow-500 stroke-yellow-500"
+              key={index}
+            />
+          ))}
+        </div>
+      );
     },
   },
   {
