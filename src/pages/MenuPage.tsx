@@ -1,4 +1,6 @@
+import BackArrowBtn from '@/components/customs/BackArrowBtn';
 import Heading from '@/components/customs/Heading';
+import HeadingContainer from '@/components/customs/HeadingContainer';
 import MenuCard from '@/components/customs/menu/MenuCard';
 import useMeals from '@/hooks/useMeals';
 
@@ -6,7 +8,10 @@ const MenuPage = () => {
   const { data: meals, isLoading, error } = useMeals();
   return (
     <>
-      <Heading title="Menu" />
+      <HeadingContainer>
+        <BackArrowBtn />
+        <Heading title="Menu" description="Menu List" />
+      </HeadingContainer>
       <div className="mx-auto">
         <div className="grid md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] gap-6">
           {meals?.map((meal) => (

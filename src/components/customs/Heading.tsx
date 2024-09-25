@@ -1,13 +1,13 @@
 interface Props {
   title: string;
-  text?: string;
+  description?: string;
 }
 
-const Heading = ({ title, text }: Props) => {
+const Heading = ({ title, description }: Props) => {
   return (
     <div>
-      <h1 className="mb-8">{title}</h1>
-      <small>{text}</small>
+      <h1 className="">{title}</h1>
+      <small className="text-[#3ea061]">{description}</small>
     </div>
   );
 };
