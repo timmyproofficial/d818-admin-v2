@@ -2,6 +2,8 @@ import Heading from '@/components/customs/Heading';
 import { DataTable } from '@/components/ui/data-table';
 import { outOfBoundColumns } from '@/components/customs/outOfBounds/OutOfBoundColumns';
 import useOutOfBounds from '@/hooks/useOutOfBounds';
+import HeadingContainer from '@/components/customs/HeadingContainer';
+import BackArrowBtn from '@/components/customs/BackArrowBtn';
 
 const OutOfBoundPage = () => {
   const { data, isLoading, error } = useOutOfBounds();
@@ -12,7 +14,13 @@ const OutOfBoundPage = () => {
 
   return (
     <>
-      <Heading title="Out of Bound Orders" />
+      <HeadingContainer>
+        <BackArrowBtn />
+        <Heading
+          title="Out of Bound Orders"
+          description="Managing Out-of-bound orders"
+        />
+      </HeadingContainer>
 
       <div className="mx-auto">
         <DataTable

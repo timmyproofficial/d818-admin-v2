@@ -1,9 +1,12 @@
 import Heading from '@/components/customs/Heading';
+import HeadingContainer from '@/components/customs/HeadingContainer';
 
 const DashboardPage = () => {
   return (
     <div>
-      <Heading title="Dashboard" />
+      <HeadingContainer>
+        <Heading title="Dashboard" description="Welcome to your Dashboard" />
+      </HeadingContainer>
       DashboardPage
     </div>
   );

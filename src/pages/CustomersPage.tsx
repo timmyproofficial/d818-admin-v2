@@ -1,5 +1,7 @@
+import BackArrowBtn from '@/components/customs/BackArrowBtn';
 import { customerColumns } from '@/components/customs/customers/CustomerColumns';
 import Heading from '@/components/customs/Heading';
+import HeadingContainer from '@/components/customs/HeadingContainer';
 import { DataTable } from '@/components/ui/data-table';
 import useCustomers from '@/hooks/useCustomers';
 
@@ -12,7 +14,10 @@ const CustomersPage = () => {
 
   return (
     <>
-      <Heading title="Customers" />
+      <HeadingContainer>
+        <BackArrowBtn />
+        <Heading title="Customers" description="Managing Customers" />
+      </HeadingContainer>
       <div className="mx-auto">
         <DataTable
           columns={customerColumns}

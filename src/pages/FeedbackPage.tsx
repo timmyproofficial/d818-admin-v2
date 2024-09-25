@@ -1,4 +1,6 @@
+import BackArrowBtn from '@/components/customs/BackArrowBtn';
 import Heading from '@/components/customs/Heading';
+import HeadingContainer from '@/components/customs/HeadingContainer';
 import { feedbackColumns } from '@/components/customs/feedbacks/FeedbackColumns';
 import { DataTable } from '@/components/ui/data-table';
 import useFeedbacks from '@/hooks/useFeedbacks';
@@ -12,7 +14,10 @@ const FeedbackPage = () => {
 
   return (
     <>
-      <Heading title="Feedback" />
+      <HeadingContainer>
+        <BackArrowBtn />
+        <Heading title="Feedback" description="Managing Feedbacks" />
+      </HeadingContainer>
 
       <div className="mx-auto">
         <DataTable

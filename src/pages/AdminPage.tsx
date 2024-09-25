@@ -1,5 +1,7 @@
 import { adminColumns } from '@/components/customs/admins/AdminColumns';
+import BackArrowBtn from '@/components/customs/BackArrowBtn';
 import Heading from '@/components/customs/Heading';
+import HeadingContainer from '@/components/customs/HeadingContainer';
 import { DataTable } from '@/components/ui/data-table';
 import useAdmins from '@/hooks/useAdmins';
 
@@ -11,7 +13,10 @@ const AdminPage = () => {
   if (error) return <p>{error.message}</p>;
   return (
     <>
-      <Heading title="Admin" />
+      <HeadingContainer>
+        <BackArrowBtn />
+        <Heading title="Admin" description="Managing Admins" />
+      </HeadingContainer>
       <div className="mx-auto">
         <DataTable
           columns={adminColumns}

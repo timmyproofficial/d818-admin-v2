@@ -1,4 +1,6 @@
+import BackArrowBtn from '@/components/customs/BackArrowBtn';
 import Heading from '@/components/customs/Heading';
+import HeadingContainer from '@/components/customs/HeadingContainer';
 import { orderColumns } from '@/components/customs/orders/OrderColumns';
 import { DataTable } from '@/components/ui/data-table';
 import useOrders from '@/hooks/useOrders';
@@ -12,7 +14,10 @@ const OrdersPage = () => {
 
   return (
     <>
-      <Heading title="Orders" />
+      <HeadingContainer>
+        <BackArrowBtn />
+        <Heading title="Orders" description="Managing Orders" />
+      </HeadingContainer>
 
       <div className="mx-auto">
         <DataTable

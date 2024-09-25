@@ -2,6 +2,8 @@ import { DataTable } from '@/components/ui/data-table';
 import { campusColumns } from '@/components/customs/campuses/CampusColumns';
 import useCampuses from '@/hooks/useCampuses';
 import Heading from '@/components/customs/Heading';
+import HeadingContainer from '@/components/customs/HeadingContainer';
+import BackArrowBtn from '@/components/customs/BackArrowBtn';
 
 const CampusesPage = () => {
   const { data, isLoading, error } = useCampuses();
@@ -12,7 +14,10 @@ const CampusesPage = () => {
 
   return (
     <>
-      <Heading title="Campuses" />
+      <HeadingContainer>
+        <BackArrowBtn />
+        <Heading title="Campuses" description="Managing Campuses" />
+      </HeadingContainer>
       <div className="mx-auto">
         <DataTable
           columns={campusColumns}

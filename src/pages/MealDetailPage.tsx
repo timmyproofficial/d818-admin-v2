@@ -1,4 +1,6 @@
+import BackArrowBtn from '@/components/customs/BackArrowBtn';
 import Heading from '@/components/customs/Heading';
+import HeadingContainer from '@/components/customs/HeadingContainer';
 import MealDetailCard from '@/components/customs/meals/MealDetailCard';
 import MealImgCard from '@/components/customs/meals/MealImgCard';
 import { Card } from '@/components/ui/card';
@@ -12,7 +14,10 @@ const MealDetailPage = () => {
   console.log(meal);
   return (
     <div>
-      <Heading title="Meal Detail" />
+      <HeadingContainer>
+        <BackArrowBtn />
+        <Heading title="Meal Detail" />
+      </HeadingContainer>
 
       <Card className="flex gap-3">
         <MealImgCard img={meal?.image!} alt={meal?.name!} />
