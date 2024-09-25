@@ -18,7 +18,7 @@ const Layout = () => {
       <div
         className={`grid ${
           authUser
-            ? 'grid-cols-[300px_1fr] grid-rows-[70px_1fr]'
+            ? 'grid-cols-[1fr] lg:grid-cols-[300px_1fr] grid-rows-[70px_1fr]'
             : 'grid-cols-[1fr] grid-rows-[70px_1fr]'
         } min-h-screen`}
       >
@@ -26,11 +26,11 @@ const Layout = () => {
           <Navbar />
         </header>
         {authUser && (
-          <aside className="border-r-2 border-gray-100 p-5">
+          <aside className="hidden lg:block border-r-2 border-gray-100 p-5">
             <Sidebar />
           </aside>
         )}
-        <main className="p-5">
+        <main className="p-5 w-full">
           {location.pathname === '/login' && authUser ? (
             // <DashboardPage />
             <Navigate to="/" />

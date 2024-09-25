@@ -83,4 +83,23 @@
     color: rgb(254, 98, 37);
     font-weight: 500;
   }
+
+  .menu__img {
+    transform: scale(1.02);
+    transition: transform 0.5s ease; /* Smooth scaling */
+  }
+
+  .menu__img:hover {
+    transform: scale(1);
+  }
+
+  .menu__img:hover + .menu__edit-icon {
+    @apply flex justify-center items-center;
+  }
+}
+
+@layer components {
+  .menu__badge {
+    @apply bg-transparent border border-orange-400 text-gray-800 font-semibold;
+  }
 }
