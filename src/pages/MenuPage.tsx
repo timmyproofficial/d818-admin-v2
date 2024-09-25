@@ -1,20 +1,28 @@
 import Heading from '@/components/customs/Heading';
 import MenuCard from '@/components/customs/menu/MenuCard';
 import user from '../assets/user.jpg';
+import useMeals from '@/hooks/useMeals';
 
 const MenuPage = () => {
+  const { data: meals, isLoading, error } = useMeals();
   return (
-    <div>
+    <>
       <Heading title="Menu" />
-
-      <MenuCard
-        img={user}
-        name="Jollof Rice with Chicken and Plantain"
-        description="A specially cooked rice recipe from West Africa. Delicious dish with ingred..."
-        price={78}
-        category="Africa Meal"
-      />
-    </div>
+      <div className="mx-auto">
+        <div className="grid md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] gap-6">
+          {meals?.map((meal) => (
+            <MenuCard
+              key={meal._id}
+              img={meal.image}
+              name={meal.name}
+              description={meal.description}
+              price={meal.price}
+              category={meal.category?.name}
+            />
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 

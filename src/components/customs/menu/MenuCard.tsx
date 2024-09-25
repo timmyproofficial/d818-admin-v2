@@ -12,7 +12,7 @@ interface Props {
 
 const MenuCard = ({ img, name, description, price, category }: Props) => {
   return (
-    <Card className="w-[40%] p-1">
+    <Card className="p-1">
       <div className="menu__img-Container relative">
         <img
           className="rounded-lg bg-blend-overlay menu__img"
@@ -26,7 +26,13 @@ const MenuCard = ({ img, name, description, price, category }: Props) => {
       <div className="menu__details p-3">
         <div className="mb-5">
           <CardTitle className="text-sm mb-1">{name}</CardTitle>
-          <CardDescription>{description}</CardDescription>
+          <CardDescription>
+            {`${
+              description.length > 55
+                ? `${description.slice(0, 54)}...`
+                : description
+            }`}
+          </CardDescription>
         </div>
         <div className="menu__badges">
           <Badge className="bg-orange-500 hover:bg-orange-600 text-white font-semibold mr-3">
