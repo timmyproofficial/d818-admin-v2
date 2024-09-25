@@ -10,8 +10,6 @@ import { useParams } from 'react-router-dom';
 const MealDetailPage = () => {
   const { id } = useParams();
   const { data: meal } = useMeal(id!);
-  console.log(id);
-  console.log(meal);
   return (
     <div>
       <HeadingContainer>
