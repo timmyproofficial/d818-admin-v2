@@ -1,6 +1,5 @@
 import Heading from '@/components/customs/Heading';
 import MenuCard from '@/components/customs/menu/MenuCard';
-import user from '../assets/user.jpg';
 import useMeals from '@/hooks/useMeals';
 
 const MenuPage = () => {
@@ -13,6 +12,7 @@ const MenuPage = () => {
           {meals?.map((meal) => (
             <MenuCard
               key={meal._id}
+              id={meal._id}
               img={meal.image}
               name={meal.name}
               description={meal.description}

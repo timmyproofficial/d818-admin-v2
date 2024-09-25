@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardDescription, CardTitle } from '@/components/ui/card';
 import { FilePenLine } from 'lucide-react';
 
 interface Props {
+  id: string;
   img: string;
   name: string;
   description: string;
@@ -10,7 +12,7 @@ interface Props {
   category: string;
 }
 
-const MenuCard = ({ img, name, description, price, category }: Props) => {
+const MenuCard = ({ id, img, name, description, price, category }: Props) => {
   return (
     <Card className="p-1">
       <div className="menu__img-Container relative">
@@ -25,7 +27,11 @@ const MenuCard = ({ img, name, description, price, category }: Props) => {
       </div>
       <div className="menu__details p-3">
         <div className="mb-5">
-          <CardTitle className="text-sm mb-1">{name}</CardTitle>
+          <Link to={`/meals/${id}`}>
+            <CardTitle className="text-sm mb-1 hover:text-orange-900">
+              {name}
+            </CardTitle>
+          </Link>
           <CardDescription>
             {`${
               description.length > 55
