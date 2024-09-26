@@ -84,6 +84,11 @@
     font-weight: 500;
   }
 
+  .menu__edit-icon {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
   .menu__img {
     transform: scale(1.02);
     transition: transform 0.5s ease; /* Smooth scaling */
@@ -94,7 +99,7 @@
   }
 
   .menu__img:hover + .menu__edit-icon {
-    @apply flex justify-center items-center;
+    opacity: 1;
   }
 }
 

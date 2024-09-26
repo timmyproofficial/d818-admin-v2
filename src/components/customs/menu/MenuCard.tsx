@@ -14,14 +14,18 @@ interface Props {
 
 const MenuCard = ({ id, img, name, description, price, category }: Props) => {
   return (
-    <Card className="p-1">
+    <Card className="p-1 self-start">
       <div className="menu__img-Container relative">
         <img
           className="rounded-lg bg-blend-overlay menu__img"
           src={img}
           alt={name}
         />
-        <div className="menu__edit-icon h-9 w-9 bg-gray-50 absolute hidden top-2 right-3 rounded-full">
+        <div
+          onClick={() => alert('Yo!')}
+          title="Edit Menu Photo"
+          className="menu__edit-icon flex justify-center items-center h-9 w-9 bg-gray-50 absolute top-2 right-3 rounded-full cursor-pointer"
+        >
           <FilePenLine className="stroke-orange-500" />
         </div>
       </div>
